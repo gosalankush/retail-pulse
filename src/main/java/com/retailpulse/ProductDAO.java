@@ -69,6 +69,40 @@ public class ProductDAO {
         }
     }
 
+
+    public void searchProducts(String searchName){
+        String sql = "SELECT * FROM products WHERE name = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, searchName);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                
+                System.out.println("\n--- Product Found ---");
+                System.out.printf("%-5s | %-25s | %-10s | %-8s%n", "ID", "Product Name", "Price ($)", "Stock");
+                System.out.println("---------------------------------------------------------");
+            
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    double price = rs.getDouble("price");
+                    int stock = rs.getInt("stock_quantity");
+
+                    System.out.printf("%-5d | %-25s | %-10.2f | %-8d%n", id, name, price, stock);
+                
+                    System.out.println("---------------------------------------------------------");
+               
+                } else {
+                    System.out.println("No product found with the name :" + searchName);
+                }
+            }
+        } catch (SQLException e){
+            System.out.println("Database error while searching product: " + e.getMessage());
+        }
+    }
+
     public void deleteProducts(String searchName){
         String sql = "DELETE FROM products WHERE name = ?";
 
