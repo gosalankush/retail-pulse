@@ -14,8 +14,9 @@ public class Main {
             System.out.println("2. Add New Product");
             System.out.println("3. Update Product Details");
             System.out.println("4. Search Product by Name");
-            System.out.println("5. Delete Product");
-            System.out.println("6. Exit");
+            System.out.println("5. Low Stock Alerts");
+            System.out.println("6. Delete Product");
+            System.out.println("7. Exit");
             System.out.print("Choose an option: ");
             
             int choice = scanner.nextInt();
@@ -54,12 +55,15 @@ public class Main {
                     productDAO.searchProducts(name);
                     break;
                 case 5:
+                    productDAO.lowstockProducts();
+                    break;
+                case 6:
                     System.out.print("Enter product's name you want to delete: ");
                     name = scanner.nextLine();
 
                     productDAO.deleteProducts(name);
                     break;
-                case 6:
+                case 7:
                     System.out.println("Exiting application. Goodbye!");
                     scanner.close();
                     System.exit(0);

@@ -80,11 +80,12 @@ public class ProductDAO {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 
-                System.out.println("\n--- Product Found ---");
-                System.out.printf("%-5s | %-25s | %-10s | %-8s%n", "ID", "Product Name", "Price ($)", "Stock");
-                System.out.println("---------------------------------------------------------");
-            
                 if (rs.next()) {
+                    System.out.println("\n--- Product Found ---");
+                    System.out.printf("%-5s | %-25s | %-10s | %-8s%n", "ID", "Product Name", "Price ($)", "Stock");
+                    System.out.println("---------------------------------------------------------");
+            
+
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     double price = rs.getDouble("price");
@@ -101,6 +102,36 @@ public class ProductDAO {
         } catch (SQLException e){
             System.out.println("Database error while searching product: " + e.getMessage());
         }
+    }
+
+    public void lowstockProducts(){
+        String query = "SELECT * FROM products WHERE stock_quantity < 10";
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement()) {
+                try (ResultSet rs = stmt.executeQuery(query)) {
+                    
+                    if (rs.next()){
+                        System.out.println("\n--- Product Found ---");
+                        System.out.printf("%-5s | %-25s | %-10s | %-8s%n", "ID", "Product Name", "Price ($)", "Stock");
+                        System.out.println("---------------------------------------------------------");
+            
+
+                        int id = rs.getInt("id");
+                        String name = rs.getString("name");
+                        double price = rs.getDouble("price");
+                        int stock = rs.getInt("stock_quantity");
+
+                        System.out.printf("%-5d | %-25s | %-10.2f | %-8d%n", id, name, price, stock);
+                
+                        System.out.println("---------------------------------------------------------");
+               
+                    } else {
+                        System.out.println("No products found with lower stocks.");
+                    }
+                }
+            } catch (SQLException e) {
+                System.out.println("Database error while fetching low-stock products: " + e.getMessage());
+            }
     }
 
     public void deleteProducts(String searchName){
