@@ -59,7 +59,11 @@ public class Main {
                     productDAO.lowstockProducts();
                     break;
                 case 6:
-                    productDAO.sortProducts();
+                    System.out.println("\nBy which order you want to sort your products 'Ascending or Descending'?");
+                    System.out .println("Enter 'a' for Asc or 'd' for Dsc: ");
+                    String order = scanner.nextLine();
+
+                    productDAO.sortProducts(order);
                     break;
                 case 7:
                     System.out.print("Enter product's name you want to delete: ");
@@ -68,11 +72,11 @@ public class Main {
                     productDAO.deleteProducts(name);
                     break;
                 case 8:
-                    System.out.println("Exiting application. Goodbye!");
+                    System.out.println("Exiting application. Goodbye!\n");
                     scanner.close();
                     System.exit(0);
                 default:
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println("Invalid option. Please try again.\n");
             }
         }
     }
