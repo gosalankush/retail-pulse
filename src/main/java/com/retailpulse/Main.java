@@ -1,5 +1,4 @@
 package com.retailpulse;
-
 import java.util.Scanner;
 
 public class Main {
