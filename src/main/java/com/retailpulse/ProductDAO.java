@@ -171,6 +171,41 @@ public class ProductDAO {
         }
     } 
 
+    public void stocksortProducts(String orderChoice){
+        String query = "";
+        if (orderChoice.equals("a")){
+            query = "SELECT * FROM products ORDER BY stock_quantity ASC";
+        }
+        else if (orderChoice.equals("d")){
+            query = "SELECT * FROM products ORDER BY stock_quantity DESC";
+        }
+        else{
+            System.out.println("Invalid choice.");
+            System.out.println("Going back to Main Menu..");
+            return;
+        }
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            
+            System.out.println("\n--- Current Inventory Status ---");
+            System.out.printf("%-5s | %-25s | %-10s | %-8s%n", "ID", "Product Name", "Price ($)", "Stock");
+            System.out.println("---------------------------------------------------------");
+            
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                int stock = rs.getInt("stock_quantity");
+                
+                System.out.printf("%-5d | %-25s | %-10.2f | %-8d%n", id, name, price, stock);
+            }
+            System.out.println("---------------------------------------------------------");
+        
+        } catch (SQLException e) {
+            System.err.println("Database error while fetching products: " + e.getMessage());
+        }
+    } 
 
     public void deleteProducts(String searchName){
         String sql = "DELETE FROM products WHERE name = ?";

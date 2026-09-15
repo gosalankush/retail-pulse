@@ -70,7 +70,7 @@ public class Main {
                     System.out .println("Enter 'a' for Asc or 'd' for Dsc: ");
                     String stockorder = scanner.nextLine();
 
-                    productDAO.sortProducts(stockorder);
+                    productDAO.stocksortProducts(stockorder);
                     break;
 
                 case 8:
