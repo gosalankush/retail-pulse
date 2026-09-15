@@ -171,6 +171,7 @@ public class ProductDAO {
         }
     } 
 
+
     public void deleteProducts(String searchName){
         String sql = "DELETE FROM products WHERE name = ?";
 
