@@ -135,7 +135,7 @@ public class ProductDAO {
         }
     }
 
-    public void sortProducts(String orderChoice){
+    public void priceSort(String orderChoice){
         String query = "";
         if (orderChoice.equals("a")){
             query = "SELECT * FROM products ORDER BY price ASC";
@@ -171,7 +171,7 @@ public class ProductDAO {
         }
     } 
 
-    public void stocksortProducts(String orderChoice){
+    public void stockSort(String orderChoice){
         String query = "";
         if (orderChoice.equals("a")){
             query = "SELECT * FROM products ORDER BY stock_quantity ASC";

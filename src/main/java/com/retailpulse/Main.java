@@ -62,16 +62,16 @@ public class Main {
                 case 6:
                     System.out.println("\nBy which order you want to sort your products 'Ascending or Descending'?");
                     System.out .print("Enter 'a' for Asc or 'd' for Dsc: ");
-                    String order = scanner.nextLine();
+                    String priceorder = scanner.nextLine();
 
-                    productDAO.sortProducts(order);
+                    productDAO.priceSort(priceorder);
                     break;
                 case 7:
                     System.out.println("\nBy which order you want to sort your products 'Ascending or Descending'?");
                     System.out .print("Enter 'a' for Asc or 'd' for Dsc: ");
                     String stockorder = scanner.nextLine();
 
-                    productDAO.stocksortProducts(stockorder);
+                    productDAO.stockSort(stockorder);
                     break;
 
                 case 8:
@@ -81,6 +81,9 @@ public class Main {
                     productDAO.deleteProducts(name);
                     break;
                 case 9:
+                    productDAO.lowstockProducts();
+                    break;
+                case 10:
                     System.out.println("Exiting application. Goodbye!\n");
                     scanner.close();
                     System.exit(0);
