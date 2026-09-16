@@ -81,7 +81,7 @@ public class Main {
                     productDAO.deleteProducts(name);
                     break;
                 case 9:
-                    productDAO.lowstockProducts();
+                    productDAO.totalInventory();
                     break;
                 case 10:
                     System.out.println("Exiting application. Goodbye!\n");

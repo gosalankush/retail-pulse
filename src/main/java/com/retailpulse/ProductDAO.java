@@ -226,4 +226,24 @@ public class ProductDAO {
             System.out.println("Database error while deleting product: " + e.getMessage());
         }
     }
+
+    public void totalInventory(){
+        String query = "SELECT SUM(price*stock_quantity) AS total_inventory FROM products";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+                    
+            if (rs.next()){
+                double total_value = rs.getDouble("total_inventory");
+
+                System.out.println("\n--- Inventory Valuation ---");
+                System.out.printf("Total Inventory Value: $%.2f\n", total_value);
+            } else {
+                System.out.println("No product's details found to calculate total inventory.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Database error while fetching Inventory details: " + e.getMessage());
+        }
+    }
 }
