@@ -9,6 +9,14 @@ public class Main {
         
         while (true) {
             System.out.println("\n=== RetailPulse Inventory System ===");
+            System.out.println("1. Admin Account");
+            System.out.println("2. User Account");
+            System.out.println("3. Exit");
+            System.out.println("Choose an option: ");
+
+            int mchoice = scanner.nextInt();
+            scanner.nextLine();
+
             System.out.println("1. View All Products");
             System.out.println("2. Add New Product");
             System.out.println("3. Update Product Details");
