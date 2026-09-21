@@ -96,7 +96,7 @@ public class ProductDAO {
                     System.out.println("---------------------------------------------------------");
                
                 } else {
-                    System.out.println("No product found with the name :" + searchName);
+                    System.out.println("No product found with the name: " + searchName);
                 }
             }
         } catch (SQLException e){
