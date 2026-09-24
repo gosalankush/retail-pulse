@@ -145,7 +145,7 @@ public class ProductDAO {
         }
         else{
             System.out.println("Invalid choice.");
-            System.out.println("Going back to Main Menu..");
+            System.out.println("Going back to previous Menu..");
             return;
         }
         try (Connection conn = DatabaseConnection.getConnection();
@@ -181,7 +181,7 @@ public class ProductDAO {
         }
         else{
             System.out.println("Invalid choice.");
-            System.out.println("Going back to Main Menu..");
+            System.out.println("Going back to previous Menu..");
             return;
         }
         try (Connection conn = DatabaseConnection.getConnection();

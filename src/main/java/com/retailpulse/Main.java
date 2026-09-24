@@ -147,11 +147,55 @@ public class Main {
                             keepuseroptions = false;
                             break;
                         default:
-                            System.out.println("Invalid option. Please try again.\n");
+                            System.out.println("Invalid option. Please try again.");
                     }
                 }
             }else if (mchoice == 3) {
+                boolean keepguestoptions = true;
+                while (keepguestoptions) {
+                    System.out.println("\n---Guest Mode---");
+                    System.out.println("1. View All Products");
+                    System.out.println("2. Search Product by Name");
+                    System.out.println("3. Sort Products by Price");
+                    System.out.println("4. Sort Products by Stocks");
+                    System.out.println("5. Exit");
+                    System.out.print("Choose an option: ");
 
+                    int gchoice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (gchoice) {
+                        case 1:
+                            productDAO.viewProducts();
+                            break;
+                        case 2:
+                            System.out.print("Enter product's name you want to search: ");
+                            String name = scanner.nextLine();
+
+                            productDAO.searchProducts(name);
+                            break;
+                        case 3:
+                            System.out.println("\nBy which order you want to sort your products 'Ascending or Descending'?");
+                            System.out .print("Enter 'a' for Asc or 'd' for Dsc: ");
+                            String priceorder = scanner.nextLine();
+
+                            productDAO.priceSort(priceorder);
+                            break;
+                        case 4:
+                            System.out.println("\nBy which order you want to sort your products 'Ascending or Descending'?");
+                            System.out .print("Enter 'a' for Asc or 'd' for Dsc: ");
+                            String stockorder = scanner.nextLine();
+
+                            productDAO.stockSort(stockorder);
+                            break;
+                        case 5:
+                            System.out.println("Exiting back to Main Menu...");
+                            keepguestoptions = false;
+                            break;
+                        default:
+                            System.out.println("Invalid option. Please try again.");
+                    }
+                }
             }else if(mchoice == 4){
                 System.out.println("Exiting application. Goodbye!\n");
                 scanner.close();
