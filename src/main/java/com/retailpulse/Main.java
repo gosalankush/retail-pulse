@@ -12,7 +12,7 @@ public class Main {
             System.out.println("1. Admin Account");
             System.out.println("2. User Account");
             System.out.println("3. Guest Mode");
-            System.out.println("3. Exit");
+            System.out.println("4. Exit");
             System.out.print("Choose an option: ");
 
             int mchoice = scanner.nextInt();
@@ -150,7 +150,9 @@ public class Main {
                             System.out.println("Invalid option. Please try again.\n");
                     }
                 }
-            }else if(mchoice == 3){
+            }else if (mchoice == 3) {
+
+            }else if(mchoice == 4){
                 System.out.println("Exiting application. Goodbye!\n");
                 scanner.close();
                 System.exit(0);
