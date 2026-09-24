@@ -11,6 +11,7 @@ public class Main {
             System.out.println("\n=== RetailPulse Inventory System ===");
             System.out.println("1. Admin Account");
             System.out.println("2. User Account");
+            System.out.println("3. Guest Mode");
             System.out.println("3. Exit");
             System.out.print("Choose an option: ");
 
